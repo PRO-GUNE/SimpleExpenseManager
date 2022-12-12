@@ -40,7 +40,6 @@ public class PersistentAccountDAO implements AccountDAO {
     @Override
     public List<Account> getAccountsList() {
         Cursor data = database.rawQuery("SELECT * FROM Account", null);
-
         List<Account> accounts = new ArrayList<>();
 
         if (data.moveToFirst()) {

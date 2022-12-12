@@ -41,7 +41,7 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Get list of account numbers as String.
      *
-     * @return
+     * @return - list of all the account numbers
      */
     public List<String> getAccountNumbersList() {
         return accountsHolder.getAccountNumbersList();
@@ -50,13 +50,14 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Update the account balance.
      *
-     * @param accountNo
-     * @param day
-     * @param month
-     * @param year
-     * @param expenseType
-     * @param amount
-     * @throws InvalidAccountException
+     * @param accountNo - account number of the respective account
+     * @param day - date of the transaction
+     * @param month - month of the transaction
+     * @param year - year of the transaction
+     * @param expenseType - Whether the expense is a EXPENSE or an INCOME
+     * @param amount - amount transferred
+     * @throws InvalidAccountException - invalid account information
+     * @throws InvalidTransactionException - invalid transaction
      */
     public void updateAccountBalance(String accountNo, int day, int month, int year, ExpenseType expenseType,
                                      String amount) throws InvalidAccountException, InvalidTransactionException {
@@ -74,7 +75,7 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Get a list of transaction logs.
      *
-     * @return
+     * @return - first ten transactions of the database
      */
     public List<Transaction> getTransactionLogs() {
         return transactionsHolder.getPaginatedTransactionLogs(10);
@@ -83,10 +84,10 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Add account to the accounts dao.
      *
-     * @param accountNo
-     * @param bankName
-     * @param accountHolderName
-     * @param initialBalance
+     * @param accountNo - account number of the particular account
+     * @param bankName - name of the bank holding the account
+     * @param accountHolderName - name of the account holder
+     * @param initialBalance - balance of the account
      */
     public void addAccount(String accountNo, String bankName, String accountHolderName, double initialBalance) {
         Account account = new Account(accountNo, bankName, accountHolderName, initialBalance);
@@ -96,7 +97,7 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Get access to the AccountDAO concrete implementation.
      *
-     * @return
+     * @return - AccountDAO object
      */
     public AccountDAO getAccountsDAO() {
         return accountsHolder;
@@ -105,7 +106,7 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Set the concrete AccountDAO implementation.
      *
-     * @param accountDAO
+     * @param accountDAO - concrete AccountDAO implementation
      */
     public void setAccountsDAO(AccountDAO accountDAO) {
         this.accountsHolder = accountDAO;
@@ -114,7 +115,7 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Get access to the TransactionDAO concrete implementation.
      *
-     * @return
+     * @return - TransactionDAO object
      */
     public TransactionDAO getTransactionsDAO() {
         return transactionsHolder;
@@ -123,7 +124,7 @@ public abstract class ExpenseManager implements Serializable {
     /***
      * Set the concrete TransactionDAO implementation.
      *
-     * @param transactionDAO
+     * @param transactionDAO - concrete TransactionDAO object
      */
     public void setTransactionsDAO(TransactionDAO transactionDAO) {
         this.transactionsHolder = transactionDAO;

@@ -7,6 +7,8 @@ import lk.ac.mrt.cse.dbs.simpleexpensemanager.control.exception.ExpenseManagerEx
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentAccountDAO;
 import lk.ac.mrt.cse.dbs.simpleexpensemanager.data.impl.PersistentTransactionDAO;
 
+// A persistent expense manager that keeps the data created by the app
+// in an embedded database
 public class PersistentDemoExpenseManager extends ExpenseManager{
     private final Context context;
 
